@@ -34,6 +34,7 @@ class FlipperWidgetState extends State<FlipperWidget>
     with TickerProviderStateMixin {
   bool _flipped = false;
   late AnimationController _controller;
+  late Animation<double> _animation;
 
   late Matrix4 correction;
   double angleCorrection = 0;
@@ -50,6 +51,11 @@ class FlipperWidgetState extends State<FlipperWidget>
     }
     _flipped = false;
     _controller = AnimationController(vsync: this, duration: widget._duration);
+    _animation=Tween<double>(begin: 0,end: 1).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: widget._curve,
+      ),);
   }
 
   @override
@@ -72,9 +78,9 @@ class FlipperWidgetState extends State<FlipperWidget>
 
     widget._controller._state = this;
     return AnimatedBuilder(
-        animation: _controller,
+        animation: _animation,
         builder: (context, child) {
-          double angle = _controller.value * pi;
+          double angle = _animation.value * pi;
           if(!_flipped){
             angle += angleCorrection;
           }

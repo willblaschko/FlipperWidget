@@ -90,8 +90,9 @@ class _MyHomePageState extends State<MyHomePage> {
               front: Container(color: Colors.green, alignment: Alignment.center, child: const Text("Front", style: TextStyle(fontSize: 40),)),
               back: Container(color: Colors.red, alignment: Alignment.center, child: const Text("Back", style: TextStyle(fontSize: 40))),
               controller: controller,
-          duration: Duration(milliseconds: 400),
-          flipDirection: FlipDirection.up,),
+          duration: const Duration(milliseconds: 4000),
+          flipDirection: FlipDirection.up,
+          curve: Curves.fastLinearToSlowEaseIn,),
         ),
       ),
       floatingActionButton: FloatingActionButton(
