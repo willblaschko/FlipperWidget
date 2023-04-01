@@ -96,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             back: GestureDetector(
-              onTap: () => controller.resetToFront(),
+              onTap: () => controller.showFront(),
               child: Container(
                 color: Colors.red,
                 alignment: Alignment.center,

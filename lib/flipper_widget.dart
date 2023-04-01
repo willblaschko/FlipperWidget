@@ -71,12 +71,12 @@ class FlipperWidgetState extends State<FlipperWidget>
     return _flipped;
   }
 
-  Future<bool> resetToFront() async {
+  Future<bool> showSide({front = true}) async {
     if(_controller.isAnimating) return false;
-    _flipped = false;
+    _flipped = !front;
     await _controller.forward(from: 0).then((value) => angleCorrection = pi);
     return _flipped;
-}
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -131,5 +131,6 @@ class FlipperWidgetController {
   FlipperWidgetState? _state;
 
   Future flipWidget() async => _state?.flipWidget();
-  Future resetToFront() async => _state?.resetToFront();
+  Future showFront() async => _state?.showSide(front: true);
+  Future showBack() async => _state?.showSide(front: false);
 }
