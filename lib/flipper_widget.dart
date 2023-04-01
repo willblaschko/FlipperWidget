@@ -5,20 +5,20 @@ import 'package:flutter/widgets.dart';
 enum FlipDirection { right, left, up, down }
 
 class FlipperWidget extends StatefulWidget {
-  Widget _front;
-  Widget _back;
-  FlipperWidgetController _controller;
-  Duration _duration;
-  Curve _curve;
-  FlipDirection _flipDirection;
+  final Widget _front;
+  final Widget _back;
+  final FlipperWidgetController _controller;
+  final Duration _duration;
+  final Curve _curve;
+  final FlipDirection _flipDirection;
 
   FlipperWidget(
       {required Widget front,
-      required Widget back,
-      required FlipperWidgetController controller,
-      Duration duration = const Duration(milliseconds: 300),
-      Curve curve = Curves.easeInExpo,
-      FlipDirection flipDirection = FlipDirection.left})
+        required Widget back,
+        required FlipperWidgetController controller,
+        Duration duration = const Duration(milliseconds: 300),
+        Curve curve = Curves.easeInExpo,
+        FlipDirection flipDirection = FlipDirection.left})
       : _front = front,
         _back = back,
         _controller = controller,
@@ -96,10 +96,10 @@ class FlipperWidgetState extends State<FlipperWidget>
             child: isFrontImage(angle)
                 ? widget._front
                 : Transform(
-                    transform: correction,
-                    alignment: Alignment.center,
-                    child: widget._back,
-                  ),
+              transform: correction,
+              alignment: Alignment.center,
+              child: widget._back,
+            ),
           );
         });
   }
