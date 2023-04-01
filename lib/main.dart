@@ -87,12 +87,30 @@ class _MyHomePageState extends State<MyHomePage> {
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
           child: FlipperWidget(
-              front: Container(color: Colors.green, alignment: Alignment.center, child: const Text("Front", style: TextStyle(fontSize: 40),)),
-              back: Container(color: Colors.red, alignment: Alignment.center, child: const Text("Back", style: TextStyle(fontSize: 40))),
-              controller: controller,
-          duration: const Duration(milliseconds: 4000),
-          flipDirection: FlipDirection.up,
-          curve: Curves.fastLinearToSlowEaseIn,),
+            front: Container(
+              color: Colors.green,
+              alignment: Alignment.center,
+              child: const Text(
+                "Front",
+                style: TextStyle(fontSize: 40),
+              ),
+            ),
+            back: GestureDetector(
+              onTap: () => controller.resetToFront(),
+              child: Container(
+                color: Colors.red,
+                alignment: Alignment.center,
+                child: const Text(
+                  "Back",
+                  style: TextStyle(fontSize: 40),
+                ),
+              ),
+            ),
+            controller: controller,
+            duration: const Duration(milliseconds: 1000),
+            flipDirection: FlipDirection.up,
+            curve: Curves.easeOutExpo,
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
