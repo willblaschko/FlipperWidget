@@ -13,11 +13,11 @@ class FlipperWidget extends StatefulWidget {
   FlipDirection _flipDirection;
 
   FlipperWidget(
-      {required front,
-      required back,
-      required controller,
-      duration = const Duration(milliseconds: 300),
-      curve = Curves.easeInExpo,
+      {required Widget front,
+      required Widget back,
+      required FlipperWidgetController controller,
+      Duration duration = const Duration(milliseconds: 300),
+      Curve curve = Curves.easeInExpo,
       FlipDirection flipDirection = FlipDirection.left})
       : _front = front,
         _back = back,
